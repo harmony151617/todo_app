@@ -18,9 +18,14 @@
     "mongoose": "^8.10.2",
     "nodemon": "^3.1.9",
     "react-router-dom": "^7.3.0",
-    "saas": "^1.0.0"
+    "saas": "^1.0.0",
+    "styled-components": "^6.1.16"
   },
   "devDependencies": {
-    "sass": "^1.85.1"
+    "@babel/core": "^7.26.10",
+    "@babel/preset-env": "^7.26.9",
+    "babel-loader": "^10.0.0",
+    "sass": "^1.85.1",
+    "webpack": "^5.98.0"
   }
 }
