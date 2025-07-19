@@ -3,6 +3,8 @@ import {Link} from 'react-router-dom'
 import axios from 'axios'
 import { AuthContext } from '../../context/AuthContext'
 
+import './AuthPage.scss'
+
 const Login = () => {
     const [form, setForm] = useState({
         email: '',
@@ -29,24 +31,26 @@ const Login = () => {
         }
 }
     return (
-        <div>
-            <h3>Авторизація</h3>
-            <form className='form form-login' onSubmit={e => e.preventDefault()} >
-                <div className='row'>
-                    <div className="input-field col s12">
-                        <input type="email" name="email" className="validate" onChange={changeHandler} />
-                        <label htmlFor="email">Email</label>
+        <div className='container'>
+            <div className='auth-page'>
+                <h3>Авторизація</h3>
+                <form className='form form-login' onSubmit={e => e.preventDefault()} >
+                    <div className='row'>
+                        <div className="input-field col s12">
+                            <input type="email" id="email" name="email" className="validate" onChange={changeHandler} autoComplete="on" />
+                            <label htmlFor="email">Email</label>
+                        </div>
+                        <div className="input-field col s12">
+                            <input type="password" id="password" name="password" className="validate" onChange={changeHandler} />
+                            <label htmlFor="password">Пароль</label>
+                        </div>   
                     </div>
-                    <div className="input-field col s12">
-                        <input type="password" name="password" className="validate" onChange={changeHandler} />
-                        <label htmlFor="password">Пароль</label>
-                    </div>   
-                </div>
-                <div className="row">
-                    <button className='wawes-effect wawes-light btn btn blue' onClick={loginHandler}>Увійти</button>
-                    <Link to="/register" className="btn-outline btn-reg">Немає акаунту?</Link>
-                </div>
-            </form>
+                    <div className="row">
+                        <button className='wawes-effect wawes-light btn btn blue' onClick={loginHandler}>Увійти</button>
+                        <Link to={"/register"} className="btn-outline btn-reg">Немає акаунту?</Link>
+                    </div>
+                </form>
+            </div>
         </div>
     )
 }

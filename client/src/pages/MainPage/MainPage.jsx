@@ -1,6 +1,7 @@
-import React, {useState, useContext, useCallback} from 'react'
+import React, {useState, useContext, useCallback, useEffect} from 'react'
 import axios from 'axios'
 import { AuthContext } from '../../context/AuthContext'
+
 import './MainPages.scss'
 
 const MainPage = () => {
@@ -10,15 +11,13 @@ const MainPage = () => {
 
     const getTodo = useCallback(async () => {
         try {
-            await axios.get('/api/todo', 
-                {headers:{
+            await axios.get('/api/todo', {
+                headers: {
                     'Content-Type': 'application/json; charset=UTF-8'
-                    }
                 },
-                {params:{userId}
+                params: {userId}
                 })
             .then((response) => setTodos(response.data))
-
         } catch (error) {
             console.log(error)
             }
@@ -87,6 +86,9 @@ const MainPage = () => {
                 }
     }, [getTodo, todos])
 
+    useEffect(() => {
+        getTodo ()
+    }, [getTodo])
     
 
     return (
@@ -98,7 +100,7 @@ const MainPage = () => {
                         <div className='input-field col s-12'>
                             <input
                                 type="text"
-                                id="text"
+                                id="input"
                                 name="input"
                                 className="validate"
                                 value={text}
